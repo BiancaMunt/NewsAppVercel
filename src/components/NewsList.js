@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react'
-// import { makeStyles } from '@material-ui/core/styles';
+import NewsItem from './NewsItem';
+import { makeStyles } from '@material-ui/core/styles';
 // import Accordion from '@material-ui/core/Accordion';
 // import AccordionSummary from '@material-ui/core/AccordionSummary';
 // import AccordionDetails from '@material-ui/core/AccordionDetails';
 // import Typography from '@material-ui/core/Typography';
 // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     width: '100%',
-//   },
-//   heading: {
-//     fontSize: theme.typography.pxToRem(15),
-//     fontWeight: theme.typography.fontWeightRegular,
-//   },
-// }));
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+}));
 
 // export default function SimpleAccordion() {
-//   const classes = useStyles();
 
 //   return (
 //     <div className={classes.root}>
@@ -65,7 +65,8 @@ import React, { useState, useEffect } from 'react'
 // }
 
 const NewsList = () => {
-  const [news, setNews] = useState([]);
+  const classes = useStyles();
+  const [news, setNews] = useState();
 
   useEffect(() => {
     fetchNews();
@@ -80,14 +81,14 @@ const NewsList = () => {
       }
     })
       .then(res => res.json())
-      .then(data => console.log(data))
+      // .then(data => console.log(data))
       .then(data => setNews(data))
       .catch(err => console.log(err));
   }
 
   return (
-    <div>
-      {/* {news} */}
+    <div className={classes.root}>
+      {news ? news.articles.map((article, i) => <NewsItem key={article._id} data={article} index={i + 1} classes={classes} />) : 'LOADING!!' }
     </div>
   );
 };
