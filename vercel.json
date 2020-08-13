@@ -1,7 +1,0 @@
-{
-  "build": {
-    "env": {
-      "BUTTER_API_TOKEN": "@butter_api_token"
-    }
-  }
-}

@@ -5,7 +5,7 @@ import NewsItem from './NewsItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: '80%',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -35,7 +35,7 @@ const NewsList = ({ page }) => {
 
   return (
     <div className={classes.root}>
-      {news ? news.articles.map((article, i) => <NewsItem key={article._id} data={article} index={i + 1} classes={classes} />) : 'LOADING!!'}
+      {news ? news.articles.map((article, i) => <NewsItem key={article._id} data={article} index={i + 1} classes={classes} />) : 'Loading...'}
     </div>
   );
 };
