@@ -14,13 +14,16 @@ const NewsItem = ({ data, index, classes }) => (
         aria-controls={`panel${index}a-content`}
         id={`panel${index}a-header`}
       >
-        <Typography className={classes.heading}>{data.title}</Typography>
+        <Typography className={classes.heading}>
+          <h3>{data.title}</h3>
+        </Typography>
       </AccordionSummary>
       <AccordionDetails>
         <Typography>
           {data.summary}
         </Typography>
       </AccordionDetails>
+      <a href={data.link} style={{ paddingLeft: '16px' }}>Go to the article</a>
     </Accordion>
   </div>
 );
