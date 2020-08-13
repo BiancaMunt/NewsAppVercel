@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import NewsItem from './NewsItem';
 
 const useStyles = makeStyles((theme) => ({
@@ -12,12 +13,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NewsList = () => {
+const NewsList = ({ page }) => {
   const classes = useStyles();
   const [news, setNews] = useState();
 
   const fetchNews = () => {
-    fetch('https://newscatcher.p.rapidapi.com/v1/stocks?&page=3&media=True&lang=en&ticker=AAPL', {
+    fetch(`https://newscatcher.p.rapidapi.com/v1/stocks?&page=${page}&media=True&lang=en&ticker=AAPL`, {
       headers: {
         'x-rapidapi-host': 'newscatcher.p.rapidapi.com',
         'x-rapidapi-key': `${process.env.REACT_APP_BUTTER_API_TOKEN}`,
@@ -30,7 +31,7 @@ const NewsList = () => {
 
   useEffect(() => {
     fetchNews();
-  }, []);
+  }, [page]);
 
   return (
     <div className={classes.root}>
@@ -40,3 +41,7 @@ const NewsList = () => {
 };
 
 export default NewsList;
+
+NewsList.propTypes = {
+  page: PropTypes.number.isRequired,
+};
