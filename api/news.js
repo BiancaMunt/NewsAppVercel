@@ -12,13 +12,12 @@ module.exports = (request, response) => {
 
   req.headers({
     "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-    "x-rapidapi-key": process.env.NODE_ENV_BUTTER_API_TOKEN,
+    "x-rapidapi-key": process.env.BUTTER_API_TOKEN,
     "useQueryString": true
   });
   
   req.end(function (res) {
     if (res.error) throw new Error(res.error);
-    response.setHeader('Access-Control-Allow-Origin', '*');
     response.json(res.body);
   });
 }
