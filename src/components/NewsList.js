@@ -18,7 +18,7 @@ const NewsList = ({ page }) => {
   const [news, setNews] = useState();
 
   const fetchNews = () => {
-    fetch(`https://news-six.vercel.app/api/news/?page=${page}`, {
+    fetch(`/api/news/?page=${page}`, {
     })
       .then((res) => res.json())
       .then((data) => setNews(data))
