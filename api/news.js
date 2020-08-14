@@ -1,5 +1,4 @@
 const unirest = require("unirest");
-const key = process.env.NODE_ENV_BUTTER_API_TOKEN;
 
 module.exports = (request, response) => {
   
@@ -13,7 +12,7 @@ module.exports = (request, response) => {
 
   req.headers({
     "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-    "x-rapidapi-key": key,
+    "x-rapidapi-key": process.env.NODE_ENV_BUTTER_API_TOKEN,
     "useQueryString": true
   });
   
