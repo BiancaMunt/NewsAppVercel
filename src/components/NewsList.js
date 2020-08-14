@@ -18,11 +18,7 @@ const NewsList = ({ page }) => {
   const [news, setNews] = useState();
 
   const fetchNews = () => {
-    fetch(`https://newscatcher.p.rapidapi.com/v1/stocks?&page=${page}&media=True&lang=en&ticker=AAPL`, {
-      headers: {
-        'x-rapidapi-host': 'newscatcher.p.rapidapi.com',
-        'x-rapidapi-key': `${process.env.REACT_APP_BUTTER_API_TOKEN}`,
-      },
+    fetch(`https://news-kappa3-3.dodomob.vercel.app/api/news/?page=${page}`, {
     })
       .then((res) => res.json())
       .then((data) => setNews(data))
