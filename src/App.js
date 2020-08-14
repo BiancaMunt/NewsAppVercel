@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import NextIcon from '@material-ui/icons/NavigateNext';
 import PrevIcon from '@material-ui/icons/NavigateBefore';
+import './App.css';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -30,16 +31,18 @@ function App() {
         <Button
           variant="contained"
           color="primary"
+          disabled={page < 2}
           className={classes.button}
-          onClick={() => setPage(page - 1)}
+          onClick={() => setPage(page === 1 ? page : page - 1)}
           startIcon={<PrevIcon />}
         />
         <span>{page}</span>
         <Button
           variant="contained"
           color="primary"
+          disabled={page > 5}
           className={classes.button}
-          onClick={() => setPage(page + 1)}
+          onClick={() => setPage(page === 6 ? page : page + 1)}
           startIcon={<NextIcon />}
         />
       </div>
